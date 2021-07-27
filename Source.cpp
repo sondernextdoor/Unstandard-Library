@@ -26,9 +26,9 @@ private:
 		{
 			client_memory = memory = reinterpret_cast<T*>( 
 				memory_block = VirtualAlloc( memory_block, 
-											 sizeof( T ), 
-											 MEM_COMMIT | MEM_RESERVE, 
-											 PAGE_READWRITE ) 
+							     sizeof( T ), 
+							     MEM_COMMIT | MEM_RESERVE, 
+							     PAGE_READWRITE ) 
 				);
 		}
 
@@ -43,9 +43,9 @@ private:
 			}
 
 			VirtualAlloc( static_cast<byte*>( memory_block ) + total_size, 
-						  size, 
-						  MEM_COMMIT | MEM_RESERVE, 
-						  PAGE_READWRITE );
+				      size, 
+				      MEM_COMMIT | MEM_RESERVE, 
+				      PAGE_READWRITE );
 
 			total_size += size;
 			return memory_block;
@@ -69,10 +69,11 @@ private:
 
 		bool copy( void* destination, void* source, size_t size )
 		{
-			if (   static_cast<byte*>( destination ) == nullptr
-				|| static_cast<byte*>( destination ) < static_cast<byte*>( memory_block )
-				|| static_cast<byte*>( destination ) >= static_cast<byte*>( memory_block ) + total_size
-				|| source == nullptr )
+			if ( static_cast<byte*>( destination ) == nullptr
+			     || static_cast<byte*>( destination ) < static_cast<byte*>( memory_block )
+			     || static_cast<byte*>( destination ) >= static_cast<byte*>( memory_block ) + total_size
+			     || source == nullptr 
+			)
 			{
 				return false;
 			}
@@ -98,9 +99,9 @@ private:
 						client_memory = reinterpret_cast<T*>
 						( 
 							memory_block = VirtualAlloc( memory_block,
-														 sizeof(T),
-														 MEM_COMMIT | MEM_RESERVE,
-														 PAGE_READWRITE ) 
+										     sizeof(T),
+										     MEM_COMMIT | MEM_RESERVE,
+										     PAGE_READWRITE ) 
 						);
 					}
 				}
@@ -372,7 +373,7 @@ public:
 
 
 		template <class... Args>
-		string(Args... args) { buffer.push_back_all(args...); }
+		string( Args... args ) { buffer.push_back_all( args... ); }
 
 		string( const char* _string )
 		{
